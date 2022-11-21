@@ -35,7 +35,7 @@ const ManageExpenses = ({ route, navigation }) => {
     }else{
       expensesContext.addExpense(expenseDate);
     }
-    navigation.goBack();
+   // navigation.goBack();
   }
 
   return (
