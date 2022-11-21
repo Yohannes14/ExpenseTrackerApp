@@ -16,7 +16,7 @@ const ExpenseItem = ({description, amount, date}) => {
         </View>
       </View>
     </Pressable> 
-  );
+  ); 
 };
 
 export default ExpenseItem;
