@@ -1,8 +1,10 @@
 import axios from "axios";
 import { baseURL } from "./baseURL";
 
-export function storeExpense(expenseData) {
-    axios.post(baseURL + '/expenses.json', expenseData);
+export async function storeExpense(expenseData) {
+    const response = await axios.post(baseURL + '/expenses.json', expenseData);
+    const id = response.data.name;
+    return id;
 }
 
 export async function fetchExpenses(){
