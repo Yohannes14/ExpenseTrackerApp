@@ -12,7 +12,7 @@ export const ExpensesContext = createContext({
 function expensesReducer(state, action){
     switch(action.type) {
         case 'ADD':
-            return [action.payload, state]
+            return [action.payload, ...state]
         case 'SET':
             const inverted = action.payload.reverse();
             return inverted;
@@ -41,8 +41,6 @@ function ExpensesContextProvider({children}) {
     function setExepense(expenses){
         dispatch({type: 'SET', payload:expenses});
     }  
-
-    
     function deleteExpense(id){
         dispatch({type: 'DELETE', payload: id});
     }
