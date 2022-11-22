@@ -30,13 +30,13 @@ const ManageExpenses = ({ route, navigation }) => {
   function cancelHandler() {
     navigation.goBack(); 
   }
-  function confirmHandler(expenseDate) {
+  function confirmHandler(expenseData) {
     if(isEditing){
-      expensesContext.updateExpense(editedExpenseId,expenseDate);
+      expensesContext.updateExpense(editedExpenseId,expenseData);
     }else{
       // post requested
-      storeExpense(expenseDate);
-      expensesContext.addExpense(expenseDate);
+      storeExpense(expenseData);
+      expensesContext.addExpense(expenseData);
     }
    navigation.goBack();
   }

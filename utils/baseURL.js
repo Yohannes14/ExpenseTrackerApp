@@ -1,0 +1,1 @@
+export const baseURL = 'https://react-native-course-a74ef-default-rtdb.firebaseio.com';
