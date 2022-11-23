@@ -21,8 +21,8 @@ function SignupScreen() {
    }catch(error){
      Alert.alert('Authentication failed ',
        'Could not create user. Please check your credentials or try again later!');
-   }
-   setIsAuthenticating(false);
+       setIsAuthenticating(false);
+      }
   } 
 
    if(isAuthenticating){
