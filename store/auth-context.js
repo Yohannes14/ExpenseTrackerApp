@@ -11,10 +11,12 @@ function AuthContextProvider({children}) {
 
     function authenticate(token) {
         setAuthToken(token);
+        AsyncStoage.setItem('token', token);
     }
 
     function logout(){
         setAuthToken(null);
+        AsyncStoage.removeItem('token');
     }
 
     const value ={

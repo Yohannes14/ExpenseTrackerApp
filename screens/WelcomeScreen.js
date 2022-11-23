@@ -5,7 +5,7 @@ import {AuthContext} from '../store/auth-context';
 
 function WelcomeScreen() {
   const authCxt = useContext(AuthContext);
-  const token =authCxt.token;
+  const token = authCxt.token;
 
   const [fetchedMessage, setFetchedMessage] = useState('');
 

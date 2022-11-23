@@ -7,8 +7,12 @@ import SignupScreen from './screens/SignupScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
 import { Colors } from './constants/styles';
 import AuthContextProvider, { AuthContext } from './store/auth-context';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import IconButton  from './components/ui/IconButton'; 
+import AsyncStoage from '@react-native-async-storage/async-storage';
+import { Text } from 'react-native';
+
+
 const Stack = createNativeStackNavigator();
 
 function AuthStack() {
@@ -64,12 +68,43 @@ const authContext = useContext(AuthContext);
   ); 
 }
 
+ function Root(){
+
+  const [isTryingLogin, setIsTryingLogin] = useState(true);
+  const authCtx = useContext(AuthContext);
+  useEffect(() => {
+    async function fetchToken(){
+      try{
+    const storedToken = await AsyncStoage.getItem('token');
+      
+    if(storedToken){
+       authCtx.authenticate(storedToken);
+    }
+  }catch(error){
+    throw error;
+    
+        
+  }
+  setIsTryingLogin(false);
+    }
+    fetchToken();
+
+}, []);
+
+if(isTryingLogin){
+  return <Text> Loading...</Text>
+}
+
+return <Navigation />
+ }
+
 export default function App() {
+
   return (
     <>
       <StatusBar style="light" />
       <AuthContextProvider>
-      <Navigation />
+       <Root />
       </AuthContextProvider>
     </>
   );
